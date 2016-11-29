@@ -1,5 +1,5 @@
 import unittest
-import ecc_impl as ecc
+from ecc_impl import ECC
 from collections import namedtuple
 
 class ECCTestCase(unittest.TestCase):
@@ -32,7 +32,7 @@ class ECCTestCase(unittest.TestCase):
 					y = 0xFE2E55A1DF72783283D6D08344BA831FCF15ABDE893718C6)
 		}
 
-		curve = ecc.ECC(
+		curve = ECC(
 	    	-3, # a
 			0x64210519e59c80e70fa7e9ab72243049feb8deecc146b9b1, # b
 			6277101735386680763835789423207666416083908700390324961279, # p
@@ -66,7 +66,7 @@ class ECCTestCase(unittest.TestCase):
 				y = 0x27E8BFF1745635EC5BA0C9F1C2EDE15414C6507D29FFE37E790A079B)
 		}
 
-		curve = ecc.ECC(
+		curve = ECC(
 	    	-3, # a
 			0xb4050a850c04b3abf54132565044b0b7d7bfd8ba270b39432355ffb4, # b
 			26959946667150639794667015087019630673557916260026308143510066298881, # p
@@ -100,7 +100,7 @@ class ECCTestCase(unittest.TestCase):
 				y = 0xE0C17DA8904A727D8AE1BF36BF8A79260D012F00D4D80888D1D0BB44FDA16DA4)
 		}
 
-		curve = ecc.ECC(
+		curve = ECC(
 	    	-3, # a
 			0x5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b, # b
 			115792089210356248762697446949407573530086143415290314195533631308867097853951, # p
