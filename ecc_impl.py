@@ -48,7 +48,8 @@ class ECC:
         if p == None or q == None:
             return p if q == None else q
         elif p[0] == q[0] and p[1] == q[1]:
-            delta = (3 * p[0]**2 + self.curve[0]) * self.inverse(2 * p[1]) % self.curve[2]
+            delta = (3 * p[0]**2 + self.curve[0]) * \
+                    self.inverse(2 * p[1]) % self.curve[2]
         else:
             delta = (p[1] - q[1]) * self.inverse((p[0] - q[0])) % self.curve[2]
 
