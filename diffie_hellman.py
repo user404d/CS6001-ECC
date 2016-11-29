@@ -6,7 +6,7 @@ class DiffieHellman(object):
     to create a shared secret over an insecure channel using
     elliptic curve public/private key pairs.
 
-    source: (https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman)
+    description source: (https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman)
     """
 
     def __init__(self, elliptic_curve, point_g):
