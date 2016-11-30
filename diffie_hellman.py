@@ -5,7 +5,7 @@ class DiffieHellman(object):
     An anonymous key agreement protocol that allows two parties,
     to create a shared secret over an insecure channel using
     elliptic curve public/private key pairs.
-
+        
     description source: (https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman)
     """
 
@@ -48,6 +48,7 @@ class DiffieHellman(object):
 if __name__ == "__main__":
     from ecc_impl import ECC
 
+    # Example of use of Diffie Hellman class
     # using curve P-192
     
     point_g = (
