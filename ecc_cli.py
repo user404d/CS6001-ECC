@@ -3,7 +3,7 @@
 """ 
 Command line interface for ECC and Diffie Hellman 
 
-User provides two private keys.  ECC and Diffie Hellman are
+ECC and Diffie Hellman are
 used to generate public keys and shared secret keys.
 """
 import json
@@ -13,7 +13,7 @@ from diffie_hellman import DiffieHellman
 
 def main(argv):
    """
-   Example input_ecc_cli.json 
+   Example example1.json 
    {
     "point_x": "0x188da80eb03090f67cbf20eb43a18800f4ff0afd82ff1012",
     "point_y": "0x07192b95ffc8da78631011ed6b24cdd573f977a11e794811",
@@ -25,7 +25,34 @@ def main(argv):
    }
    """
 
-   with open('input_ecc_cli.json') as data_file:    
+   filename = "example1.json"
+
+   help_text = 'ecc_cli.py --input <json input file>'
+
+   if len(argv) == 0:
+      print(help_text)
+      sys.exit(2)
+
+   try:
+      opts, args = getopt.getopt(argv,"h:", ["input="])
+   except getopt.GetoptError:
+      print(help_text)
+      sys.exit(2)
+   
+   # Process input from arguments 
+   for opt, arg in opts:
+      if opt == '-h':
+         print(help_text)
+         sys.exit()
+      elif opt == ("--input"):
+         filename = arg
+
+   if not os.path.isfile(filename):
+      print("{} not found.".format(filename))
+      sys.exit(2)
+
+   # Process input from json file
+   with open(filename) as data_file:    
        data = json.load(data_file)
 
    point_x = int(data["point_x"], 16)
