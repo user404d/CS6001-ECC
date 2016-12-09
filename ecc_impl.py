@@ -1,6 +1,5 @@
-class ECC:
+class ECC(object):
 
-    
     """
     Elliptic Curve for use in cryptographic algorithms
 
@@ -8,16 +7,17 @@ class ECC:
         E_p(a,b) => y^2 = x^3 + a*x + b % p
         base_point = (x,y)
     """
-    
 
     def __init__(self, a, b, p, base_point):
         self.curve = (a,b,p)
         self.base_point = base_point
         self.double_base_point = self.double_point(base_point)
-        # self.set_window_size(4)
-
 
     def xgcd(self, b, n):
+        """
+        Extended Euclidean Algorithm
+        source: https://en.wikibooks.org/wiki/Algorithm_Implementation/Mathematics/Extended_Euclidean_algorithm
+        """
         x0, x1, y0, y1 = 1, 0, 0, 1
         while n != 0:
             q, b, n = b // n, n, b % n
@@ -25,12 +25,15 @@ class ECC:
             y0, y1 = y1, y0 - q * y1
         return b, x0, y0
 
-
     def inverse(self, b):
+        """
+        Find modular inverse
+
+        Adapted from: https://en.wikibooks.org/wiki/Algorithm_Implementation/Mathematics/Extended_Euclidean_algorithm
+        """
         g, x, _ = self.xgcd(b, self.curve[2])
         if g == 1:
             return x % self.curve[2]
-
 
     def add_points(self, p, q):
         """
@@ -57,7 +60,6 @@ class ECC:
         y = (delta * (p[0] - x) - p[1]) % self.curve[2]
 
         return (x,y)
-
     
     def double_point(self, p, k = 1):
         """
@@ -74,19 +76,6 @@ class ECC:
         for i in range(0,k):
             Q = self.add_points(Q,Q)
         return Q
-
-    """
-    def set_window_size(self, r):
-        self.r = r
-        self.window_table = [None,self.base_point,self.double_base_point]
-        for i in range(3, 2**r - 2):
-            if i % 2 == 0:
-                self.window_table.append(self.add_points(self.window_table[i - 2],
-                                                         self.window_table[i - 2]))
-            else:
-                self.window_table.append(self.add_points(self.window_table[i - 2],
-                                                         self.double_base_point))
-    """
     
     def base_point_mult(self, k):
         """
@@ -106,11 +95,10 @@ class ECC:
                 
         return Q
 
-    #implement sliding window multiplication?
-
 
 if __name__ == "__main__":
 
+    # See ecc_test.py for unit tests
     
     # Testing curve P-192
     print("Testing curve P-192")
