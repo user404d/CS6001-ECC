@@ -72,11 +72,11 @@ def main(argv):
    curve = ECC(a, b, p, point_g)
    dh = DiffieHellman(curve, point_g)
 
-   print("private key 1: {}".format(private_key1))
+   print("\nprivate key 1: {}".format(private_key1))
    print("private key 2: {}".format(private_key2))
 
    public_key1 = dh.generate_public_key(private_key1)
-   print("Public key associated with private key 1: \n{}\n".format(public_key1))
+   print("\nPublic key associated with private key 1: \n{}\n".format(public_key1))
 
    public_key2 = dh.generate_public_key(private_key2)
    print("Public key associated with private key 2: \n{}\n".format(public_key2))
@@ -87,7 +87,7 @@ def main(argv):
    secret_pr2_pub1 = dh.secret_key(private_key2, public_key1)
    print("Secret key for private key 2 and public key 1: \n{}\n".format(secret_pr1_pub2))
 
-   print("Secret keys are the same: {}".format(secret_pr1_pub2 == secret_pr2_pub1))
+   print("Secret keys are the same: {}\n".format(secret_pr1_pub2 == secret_pr2_pub1))
 
 if __name__ == "__main__":
    main(sys.argv[1:])
