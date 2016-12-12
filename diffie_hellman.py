@@ -41,9 +41,9 @@ class DiffieHellman(object):
             private_key: a prime integer
             public_key: a pair of integers (tuple) corresponding to a point on the curve
 
-        Return: a pair of integers (tuple) corresponding to a point on the curve
+        Return: an integer corresponding to the x coordinate of a point on the curve
         """
-        return self.elliptic_curve.double_point(public_key, private_key)
+        return self.elliptic_curve.double_point(public_key, private_key)[0]
 
 if __name__ == "__main__":
     from ecc_impl import ECC
