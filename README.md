@@ -13,6 +13,9 @@ The example1.json file includes input for x, y, a, b, p, private key 1, and priv
 `python3 ecc_test.py`
 `python3 diffie_hellman_test.py`
 
+# Software Requirements:
+python version ~3.5
+
 # Files included in project:  
 
 ## ecc_cli.py
@@ -36,6 +39,3 @@ The example1.json file includes input for x, y, a, b, p, private key 1, and priv
 ## diffie_hellman_test.py
 
 	Unit tests for Elliptic Curve Diffie-Hellman Key Agreement Protocol 
-
-# Software Requirements:
-python version ~3.5
